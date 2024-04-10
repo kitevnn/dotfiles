@@ -1,0 +1,71 @@
+(defpoll updates :interval "2m" "zypper up")
+(defpoll packages :interval "1h" "zypper lu | wc -l")
+
+(defwidget widget-infosuse []
+     (box :class "infosuse"
+          :orientation "h"
+          :space-evenly "false"
+          :spacing 7
+          (infosusetw)))
+
+(defwidget infosusetw []
+      (box :orientation "h"
+	         :space-evenly "false"
+	         :spacing 7
+           (box :orientation "h"
+                :space-evenly "false"
+                :class "zypper-fetch-box"
+                :spacing 8
+                (box :space-evenly "false"
+                     (box :orientation "h"
+                          :spacing 3
+                          :halign "end"
+                          :style "margin-left: 10px;"
+                          (label :class "os-icon" 
+                                 :halign "start"
+                                 :text "")))
+                (label :class "os-text"
+                       :halign "start"
+                       :text "Tumbleweed")
+                (box :space-evenly "false"
+                     (box :orientation "h"
+                          :spacing 3
+                          :halign "end"
+                          :style "margin-left: 10px;"
+                              (label :class "pkgs-icon"
+                                     :halign "start"
+                                     :text "󰏖")))
+
+                (label :class "pkgs-text"
+                       :halign "start"
+                       :tooltip "Now ${packages} packages (・∀・)"  
+                       :text packages)
+                (box :orientation "h"
+                     :class "zypper"
+                     :hexpand true
+                           (label :halign "start"
+                                  :class "zypper-icon"
+                                  :text "→")
+                                      (box :class "zypper-updates-box"
+                                           :space-evenly "false"
+                                           (eventbox :cursor "pointer"
+                                                     (button :class "zypper-updates"
+                                                             :halign "start"
+                                                             :tooltip "updates(but it needs sudo permission in Tumbleweed_(:з」∠)_)"
+                                                             :onclick "" "Updates"))))
+                (box :space-evenly "false"
+                     (box :orientation "h"
+                          :spacing 3
+                          :halign "end"
+                          :style "margin-left: 10px;"
+                          (label :class "wm-icon"
+                                 :halign "start"
+                                 :text "󱪳")))
+                (box :space-evenly "false"
+                     (box :orientation "h"
+                          :spacing 3
+                          :halign "start"
+                          (label :class "wm-text"
+                                 :halign "start"
+                                 :text "Hyprland"))))))
+

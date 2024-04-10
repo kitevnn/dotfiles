@@ -1,0 +1,66 @@
+(include "widgets/profile.yuck")
+(include "widgets/workspaces.yuck")
+(include "widgets/time.yuck")
+(include "widgets/infosuse.yuck")
+(include "widgets/power.yuck")
+(include "widgets/systeminfo.yuck")
+
+;; ------------------------------------------------------------------------------------------------------ ;;
+;; | Usage                                                                                              | ;; 
+;; |                                                                                                    | ;; 
+;; |        Open Your personal favorite terminal app(e.g. Konsole)                                      | ;; 
+;; |              > Type "eww daemon"       to establish a continuous connection_(:з」∠)_               | ;; 
+;; |              > Type "eww list-windows" to show all eww-window( >﹏<。)                             | ;; 
+;; |              > Type "eww open bar"     to open bar window(・∀・)                                   | ;; 
+;; |              > Type "eww close bar"    to close bar window(・∀・)                                  | ;; 
+;; |              > Type "eww kill"         to endup the continuous connection_(:з」∠)_                 | ;; 
+;; |              > Type "eww logs"         to view the run logs Memo~(・∀・)                           | ;; 
+;; |                                                                                                    | ;; 
+;; |                                                                                                    | ;; 
+;; | PostScript                                                                                         | ;; 
+;; |                                                                                                    | ;; 
+;; |        PostScript                                                                                  | ;; 
+;; |              > If you're experiencing typographical errors along the way to eww open bar.          | ;; 
+;; |              > Don't worry, it's normal because the CSS code is written like a mountain of. (╥_╥)  | ;; 
+;; |              > If you don't dislike it, you can go to ~/.config/eww/eww.scss (´・ω・｀)            | ;; 
+;; |              > to modify the css style code to achieve the most satisfactory result,               | ;; 
+;; |              > I hope you can be mentally prepared for meow.( >﹏<。) Thank you.                   | ;; 
+;; ------------------------------------------------------------------------------------------------------ ;;
+
+;; --------------------------------------------- ;; 
+;; | defwindow bar is consist of these widgets | ;; 
+;; |      - widget-profile                     | ;;
+;; |      - widget-ws                          | ;;
+;; |      - widget-time                        | ;;
+;; |      - widget-infosuse                    | ;;
+;; |      - widget-power                       | ;;
+;; |      - widget-systeminfo                  | ;;
+;; --------------------------------------------- ;;
+(defwindow bar :monitor 0
+	             :geometry (geometry :anchor "top center"
+                                   :x "0%"
+                                   :y "0%"
+                                   :height "20px")
+               :exclusive true	
+               :space-evenly true
+               (minimal-bar))
+
+(defwidget minimal-bar []
+     (box :class "minimal-bar"
+          :orientation "h"
+          :space-evenly "false"
+          :spacing "4"
+
+          (box :class "left-bar"
+               (widget-profile)
+               (widget-ws)
+          )
+          (box :class "middle-bar"
+               (widget-time)
+               (widget-infosuse)
+          )
+          (box :class "right-bar"
+               (widget-power)
+               (widget-systeminfo)
+          )))
+

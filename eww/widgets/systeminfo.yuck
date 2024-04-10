@@ -1,0 +1,133 @@
+;; ------------------------------------------------------------------------------ ;;
+;; |  [Notes]                                                                   | ;;
+;; |                                                                            | ;; 
+;; |    about an error happened frequently with run "eww logs":                 | ;;
+;; |                                                                            | ;;
+;; |    error: Failed to turn `` into a value of type f64                       | ;;
+;; |       ┌─ widgets/systeminfo.yuck:81:37                                     | ;;
+;; |       │                                                                    | ;;
+;; |    81 │                              :value data                           | ;;
+;; |       │                                     ──── `` is not of type `f64`   | ;;
+;; |       │                                                                    | ;;
+;; |       → cannot parse float from empty string                               | ;;
+;; |                                                                            | ;;
+;; |  [What happened?]                                                          | ;;
+;; |                                                                            | ;;
+;; |    Well, I recognize that it don't make a bad effect when running eww.     | ;;
+;; |    And I will expose that what it happens due to the DEFAULT VALUE.        | ;; 
+;; |                                                                            | ;;
+;; |    Now, here is the code which error happened frequently                   | ;;
+;; |                                                                            | ;; 
+;; |    here1:                                                                  | ;;
+;; |        we set the field of data via open a slot                            | ;; 
+;; |        but we don't put any DEFAULT VALUE there                            | ;; 
+;; |    here2:                                                                  | ;;
+;; |        we put the valid value with <EWW MAGICIAL VARIABLE> now             | ;; 
+;; |        so it has a valid value finally, and it just works.                 | ;; 
+;; |                                                                            | ;; 
+;; |        EWW MAGICIAL VARIABLE:                                              | ;; 
+;; |            https://elkowar.github.io/eww/magic-vars.html                   | ;;
+;; |                                                                            | ;;
+;; |                                                                            | ;;
+;; |    (defwidget systeminfo-details [data icon css tip]  <- here 1            | ;;
+;; |         (box :class "systeminfo-details"                                   | ;;
+;; |              (circular-progress :class css                                 | ;;
+;; |                                 :value data    <- here 1                   | ;;
+;; |                                 :thickness 3                               | ;;
+;; |                                 :tooltip tip                               | ;;
+;; |                                 (overlay :valign "center"                  | ;;
+;; |                                          (label :class "icon"              | ;;
+;; |                                                 :text icon)))))            | ;;
+;; |    (defwidget systeminfo []                                                | ;;
+;; |         (box :class "systeminfo"                                           | ;;
+;; |              :spacing 8                                                    | ;;
+;; |              (temp)                                                        | ;;
+;; |              (cpu)                                                         | ;;
+;; |              (ram)                                                         | ;;
+;; |              (disk)))                                                      | ;;
+;; |                                                                            | ;;
+;; |    (defwidget cpu []                                                       | ;;
+;; |         (box :class "cpu-box"                                              | ;;
+;; |             (systeminfo-details :css "cpu"                                 | ;;
+;; |                              :tip "cpu ${round(EWW_CPU.avg,0)}%" <- here 2 | ;;
+;; |                              :data "${round(EWW_CPU.avg, 0)}"              | ;;
+;; |                              :icon "")))                                  | ;;
+;; |                                                                            | ;;
+;; |                                                                            | ;;
+;; |  [How to clean the error?]                                                 | ;;
+;; |     - not loading the widget of cpu_(:з」∠)_                               | ;; 
+;; |                                                                            | ;; 
+;; |       Examples:                                                            | ;; 
+;; |         (defwidget systeminfo []          (defwidget systeminfo []         | ;;
+;; |              (box :class "systeminfo"          (box :class "systeminfo"    | ;;
+;; |                   :spacing 8                        :spacing 8             | ;;
+;; |                   (temp)                            (temp)                 | ;;
+;; |                   (cpu)                →                                   | ;;
+;; |                   (ram)                             (ram)                  | ;;
+;; |                   (disk)))                          (disk)))               | ;;
+;; |                                                                            | ;; 
+;; |      - ignore it but maybe I could fix it after learning the lisp-family   | ;; 
+;; ----------------------------------------------------------------------------- ;;
+
+;; here is the link of python3 script: https://github.com/lauroro/hyprland-dotfiles/blob/master/.config/eww/scripts/workspaces.py
+;; 
+;; Well, what is the meaning of ./scripts/cpu-temp.sh? 
+;; Ok, I recognize that it is copied from it
+;; And it connects resouces in local system with python3 socket lib sustainbly.
+;; Therefore, the index of workspaces could be rendered with it.
+(defpoll temp :interval "5s" "./scripts/cpu-temp.sh")
+
+(defwidget widget-systeminfo []
+     (box :class "systeminfo-box"
+          :orientation "v"
+          :space-evenly "false"
+          :spacing 7
+          (systeminfo)))
+
+(defwidget systeminfo []
+     (box :class "systeminfo"
+          :spacing 8
+          (temp)  
+          (cpu)   
+          (ram)   
+          (disk)))
+       
+(defwidget cpu [] 
+     (box :class "cpu-box"
+         (systeminfo-details :css "cpu"
+                          :tip "cpu ${round(EWW_CPU.avg,0)}%"
+                          :data "${round(EWW_CPU.avg, 0)}"
+                          :icon "")))
+
+(defwidget ram [] 
+     (box :class "ram-box"
+         (systeminfo-details :css "ram"
+         :tip "mem ${round(EWW_RAM.used_mem / 1048576, 2)}MB"
+         :data {round(EWW_RAM.used_mem_perc, 0)}
+         :icon "󰄨")))
+         
+(defwidget disk [] 
+     (box :class "disk-box"
+          (systeminfo-details :css "disk"
+                           :tip "disk ${round(EWW_DISK["/"].used_perc, 2)}%"
+                           :data {round(EWW_DISK["/"].used_perc, 0)}
+                           :icon "")))
+
+(defwidget temp [] 
+     (box :class "temp-box"
+          (systeminfo-details :css "temp"
+                           :tip "cputemp ${temp}°C"
+                           :data temp
+                           :icon "")))
+
+(defwidget systeminfo-details [data icon css tip] 
+     (box :class "systeminfo-details" 
+          (circular-progress :class css
+                             :value data  
+                             :thickness 3
+                             :tooltip tip
+                             (overlay :valign "center"
+                                      (label :class "icon" 
+                                             :text icon)))))
+
+

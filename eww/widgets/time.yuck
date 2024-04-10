@@ -1,0 +1,20 @@
+(defwidget widget-time []
+     (box :class "time-box"
+          (box :class "timebox"
+               :orientation "v"
+               :space-evenly "false"
+               :spacing 0
+               (time-menu-info))))
+
+(defwidget time-menu-info []
+    (box :class "time"
+         :orientation "v"
+         :space-evenly false
+         (box :orientation "h"
+              :space-evenly false
+              :halign "center"
+              :valign "center"
+              :hexpand true
+              (label :text "${formattime(EWW_TIME, "%H:")}" :class "content")
+              (label :text "${formattime(EWW_TIME, "%M")}" :class "content"))))
+

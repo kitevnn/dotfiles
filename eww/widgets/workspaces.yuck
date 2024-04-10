@@ -1,0 +1,11 @@
+(deflisten workspaces :initial "(box :class `ws-text` (label :text \"                  \" ))" `python3 ./scripts/workspaces.py`)
+
+(defwidget widget-ws []
+     (box :orientation "h"
+          :space-evenly "false"
+          :spacing "7"
+          (box :class "ws-box" 
+               :space-evenly "true"
+              (box :class "ws" 
+                   (literal :content "${workspaces}")))))
+

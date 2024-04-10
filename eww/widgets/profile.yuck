@@ -1,0 +1,56 @@
+(defpoll uptime-days :interval "30s" "uptime | cut -c '15-22' | sed -e 's/$/days /'")
+(defpoll uptime-hours :interval "30s" "uptime | cut -c '17-17' | sed -e 's/$/hrs /'")
+(defpoll uptime-minutes :interval "30s" "uptime | cut -c '19-20' | sed -e 's/$/mins /'")
+
+(defpoll username-who-am-i :interval "24h" "whoami")
+
+(defvar AVATOR "./assets/avator.png")
+
+(defwidget widget-profile []
+     (box :orientation "v"
+          :space-evenly "false"
+          :spacing 0
+          (profile)))
+
+(defwidget profile []
+	   (box :class "profile-card"
+     :orientation "v"
+     :space-evenly "false"
+     (box :space-evenly "false"
+             :hexpand true
+             :orientation "h"
+             :spacing "6"
+             (box :style "background-image: url('${AVATOR}');"
+                  :class "profile-avator"
+                  :halign "center")
+                  (box :orientation "h"
+                       :space-evenly "false"
+                       :hexpand true
+                       (box :class "profile-host"
+                            :halign "start"
+                            (label :text username-who-am-i))
+                       (box :class "profile-uptime"
+                            :halign "start"
+                            (label :text uptime-hours)
+                            (label :text uptime-minutes)))
+                  (box :orientation "h"
+                       :class "profile-btn"
+                       :space-evenly "false"
+                       :spacing 0
+                       :valign "center"
+                       :halign "start"
+                       :hexpand false
+                       (eventbox :cursor "pointer"
+                          (button :class "profile-btn-info" 
+                                  ;; Type "physlock -d" in :onclick here if wanna a simple lock. (NOTES: we will enter a tty process after locking via physlock)>
+                                  ;; 
+                                  ;; Example
+                                  ;;   :onclick "physlock -d"
+                                  :tooltip "sorry, Enable it via editing the lock-power-restart-shutdown widget of ~/.config/eww/wigets/power.yuck"
+                                  :onclick "" "󱅞"))
+                       (eventbox :cursor "pointer"
+                          (button :class "profile-btn-info" 
+                                  :tooltip "sorry, I regard that the most effiective to exit hyprland is that press mainMod and Q with hyprland conf"
+                                  :onclick "" "󰍃"))))))
+
+

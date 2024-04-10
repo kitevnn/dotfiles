@@ -1,0 +1,49 @@
+(defwidget widget-power []
+    (box :class "powermenu"
+         :orientation "v"
+         :space-evenly "false"
+         (lock-power-restart-shutdown)))
+
+(defwidget lock-power-restart-shutdown []
+    (box :class "powermenuA"
+          (box :class "powermenuB"
+               :orientation "h"
+               :spacing 10
+               (eventbox :cursor "pointer"
+                    (box :class "lock-box"
+                        (button :class "powermenu lock" 
+                                ;; Type "physlock -d" in :onclick here if wanna a simple lock. (NOTES: we will enter a tty process after locking via physlock)>
+                                ;; 
+                                ;; Example
+                                ;;   :onclick "physlock -d"
+                                :onclick ""
+                                :tooltip "sorry, Enable it via editing the lock-power-restart-shutdown widget of ~/.config/eww/wigets/power.yuck"
+                                "")))
+               (eventbox :cursor "pointer"
+                    (box :class "exit-box"
+                        (button :class "powermenu exit" 
+                                :onclick ""
+                                :tooltip "sorry, I regard that the most effiective to exit hyprland is that press mainMod and Q with hyprland conf"
+                                "")))
+               (eventbox :cursor "pointer"
+                    (box :class "reboot-box"
+                        (button :class "powermenu reboot" 
+                                ;; Type "systemctl reboot" in :onclick here if wanna a reboot.
+                                ;; 
+                                ;; Example
+                                ;;   :onclick "systemctl reboot"
+                                :onclick ""
+                                :tooltip "sorry, Enable it via editing the lock-power-restart-shutdown widget of ~/.config/eww/wigets/power.yuck"
+                                "󱓞")))
+                    
+               (eventbox :cursor "pointer"
+                    (box :class "shutdown-box"
+                        (button :class "powermenu shutdown" 
+                                ;; Type "systemctl shutdown" in :onclick here if wanna a reboot.
+                                ;; 
+                                ;; Example
+                                ;;   :onclick "systemctl shutdown"
+                                :onclick ""
+                                :tooltip "sorry, Enable it via editing the lock-power-restart-shutdown widget of ~/.config/eww/wigets/power.yuck"
+                                ""))))))
+
