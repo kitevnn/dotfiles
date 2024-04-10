@@ -59,6 +59,18 @@ It works for me. And I hope it's not a deceptive picture \_(:з」∠)\_
 == 2.2 Installation
 Use the following command to install it.
 ```bash
+# prerequisite
+
+# install python3 via zypper
+# 
+# S  | Name     | Summary                | Type
+# ---+----------+------------------------+----------
+# i+ | python3  | ~~~~~~~~~~~~~~~~~~~~~~ | Package
+# This is because we need to execute a script file called workspace.py 
+# to make eww-widget-workspaces works expectedly
+# which after my personal testing requires python3.
+zypper in python3  # zypper install with sudo permission.
+
 # install eww via zypper
 # 
 # S  | Name | Summary                | Type
