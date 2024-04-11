@@ -7,12 +7,13 @@
 ## 2. List of tools
 List of tools
 - OS: [openSuSE Tumbleweed](https://get.opensuse.org/tumbleweed/)
-- WM: [Hyprland](https://hyprland.org/)
-- TopBar: [Eww](https://github.com/elkowar/eww)
-- Launcher: [Wofi](https://sr.ht/~scoopta/wofi/)
-- Terminal: [Konsole](https://konsole.kde.org/) or [Alacritty](https://alacritty.org/)
+- WM: [Hyprland](https://hyprland.org/) - [README](./hypr/doc/README.pdf)
+- TopBar: [Eww](https://github.com/elkowar/eww) - [README](./eww/doc/README.pdf)
+- Launcher: [Wofi](https://sr.ht/~scoopta/wofi/) - [README](./wofi/doc/README.pdf)
+- Terminal: [Konsole](https://konsole.kde.org/) or [Alacritty](https://alacritty.org/) - [README](./alacritty/doc/README.pdf)
 - Shell: [Bash](https://www.gnu.org/software/bash/)
-- Editor: [Neovim](https://neovim.io/)
+- Tmux: [Tmux](https://github.com/tmux/tmux) - [README](./tmux/doc/README.pdf)
+- Editor: [Neovim](https://neovim.io/) - [README](./nvim/doc/README.pdf)
 - Font: [SauceCodeProCompleteMono](https://github.com/ryanoasis/nerd-fonts)
 
 ## 3. Prerequisite
@@ -21,9 +22,9 @@ List of tools
 
 Why do I need it?
 
-> Well, This is to solve the problem that a part of the font called Glyphs is displayed incorrectly on some end applications.
+> Well, This is to solve the problem that a part of the font called `Glyphs` is displayed incorrectly on some terminal application.
 
-What shoud I do?
+What should I do?
 
 - Download [this nerdfont patcher font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro) provided by [the nerdfont authors](https://github.com/ryanoasis).
 
@@ -51,7 +52,7 @@ What shoud I do?
 
 ## 4. Suggestion
 
-### (1) Nvidia Graphics Driver
+### (1) Nvidia Graphics Driver - [SDB:NVIDIA drivers](https://en.opensuse.org/SDB:NVIDIA_drivers)
 
 If you're using `openSuSE Tumbleweed` as much as myself, Congratulations! we can check out how to install NVIDIA Driver on `openSuSE Tumbleweed` in this suggestion. 
 
