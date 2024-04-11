@@ -82,11 +82,11 @@ Colorscheme Table
 | 3  | `#96cb5c` | openSuSE Tumbleweed Green 75% 	
 | 4  | `#b9dc92` | openSuSE Tumbleweed Green 50% 	
 | 5  | `#dceec8` | openSuSE Tumbleweed Green 25% 	
-| 6  | `#60B48A` | lualine.normal mode
-| 7  | `#2e8b57` | lualine.insert mode
-| 8  | `#75D701` | lualine.visual mode
-| 9  | `#60B48A` | lualine.terminal mode
-| 10 | `#60B48A` | lualine.command mode
+| 6  | `#60B48A` | lualine.normal_mode
+| 7  | `#2e8b57` | lualine.insert_mode
+| 8  | `#75D701` | lualine.visual_mode
+| 9  | `#60B48A` | lualine.terminal_mode
+| 10 | `#60B48A` | lualine.command_mode
 | 11 | `#ffffff` | everforest.fg     
 | 12 | `#ffffff` | everforest.bg0    
 | 13 | `#003f3f` | everforest.bg1    
