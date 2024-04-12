@@ -53,14 +53,14 @@
 
           (box :class "left-bar"
                (widget-profile)
-               (widget-ws)
+               ;; (widget-ws)
           )
           (box :class "middle-bar"
                (widget-time)
                (widget-infosuse)
           )
           (box :class "right-bar"
-               (widget-power)
+               ;; (widget-power)
                (widget-systeminfo)
           )))
 
