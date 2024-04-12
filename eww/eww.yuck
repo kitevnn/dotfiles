@@ -29,7 +29,6 @@
 ;; --------------------------------------------- ;; 
 ;; | defwindow bar is consist of these widgets | ;; 
 ;; |      - widget-profile                     | ;;
-;; |      - widget-ws                          | ;;
 ;; |      - widget-time                        | ;;
 ;; |      - widget-infosuse                    | ;;
 ;; |      - widget-power                       | ;;
