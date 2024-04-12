@@ -1,5 +1,4 @@
 (include "widgets/profile.yuck")
-(include "widgets/workspaces.yuck")
 (include "widgets/time.yuck")
 (include "widgets/infosuse.yuck")
 (include "widgets/power.yuck")
@@ -53,14 +52,12 @@
 
           (box :class "left-bar"
                (widget-profile)
-               ;; (widget-ws)
           )
           (box :class "middle-bar"
                (widget-time)
                (widget-infosuse)
           )
           (box :class "right-bar"
-               ;; (widget-power)
                (widget-systeminfo)
           )))
 
