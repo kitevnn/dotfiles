@@ -323,7 +323,9 @@ Below is a description of the script for `workspaces.py`
 
 #contentblock("EMERGENCY FEEDBACK about lauroro's workspaces.py")
 
-There is a small chance that this py3 script will occupy the CPU for a few hours for unknown reasons (if you don't shut down or restart), but the original author #link("https://github.com/lauroro/hyprland-dotfiles/blob/master/.config/eww/scripts/workspaces.py")[#text(fill: rgb("2e8b57"), [THE ORIGINAL AUTHOR lauroro 's workspaces.py])] didn't mention why this happened, but I don't seem to have this situation since the restart.
+#contentblock("Since Lauroro's workspace.py always produces an inexplicable 100% CPU footprint on my machine, I personally don't think performance should be wasted by displaying multi-workspaces, so it's disabled on the 41139b.")
+
+There is a small chance that this py3 script will occupy the CPU for a few hours for unknown reasons (if you don't shut down or restart), but the original author #link("https://github.com/lauroro/hyprland-dotfiles/blob/master/.config/eww/scripts/workspaces.py")[#text(fill: rgb("2e8b57"), [THE ORIGINAL AUTHOR lauroro 's workspaces.py])] didn't mention why this happened, but I don't seem to have this situation since the restart. But lately, I've been feeling more and more that something is wrong, so I've disabled it in the latest version for performance reasons.
 
 ```py
 #!/usr/bin/python3
