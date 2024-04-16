@@ -13,7 +13,7 @@ List of tools
 - Terminal: [Konsole](https://konsole.kde.org/) or [Alacritty](https://alacritty.org/) - [README](./alacritty/doc/README.pdf)
 - Shell: [Bash](https://www.gnu.org/software/bash/)
 - Tmux: [Tmux](https://github.com/tmux/tmux) - [README](./tmux/doc/README.pdf)
-- Editor: [Neovim](https://neovim.io/) - [README](./nvim/doc/README.pdf) or [GNU Emacs](https://www.gnu.org/software/emacs/) - [README](WIP)
+- Editor: [Neovim](https://neovim.io/) - [README](./nvim/doc/README.pdf) or [GNU Emacs](https://www.gnu.org/software/emacs/) - README(WIP)
 - Font: [SauceCodeProCompleteMono](https://github.com/ryanoasis/nerd-fonts)
 
 ## 3. Prerequisite
