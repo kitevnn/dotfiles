@@ -15,7 +15,6 @@
 
 ;; -- theme -- 
 (require 'theme-bright)
-;; (require 'theme-ample)
 
 ;; -- plugin --
 (require 'plug-cmp)
