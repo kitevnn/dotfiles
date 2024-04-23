@@ -1,0 +1,11 @@
+;; minimal use-package(ItWorksForMe)
+(use-package dirvish
+    :ensure t                               ;; 
+    :defer                                  ;; 
+    :init (setq variable t)                 ;; 
+    :config (ido-mode 1)                    ;; 
+    :config (load-theme 'zenburn t)         ;; 
+    :hook (prog-mode . company-mode)        ;; 
+    :bind (keybindings)                     ;; 
+    :load-path "site-lisp/pdf-tools/lisp"   ;; 
+)
