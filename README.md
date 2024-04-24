@@ -1,3 +1,7 @@
+# I Migrate Archlinux from openSuSE.
+
+Therefore, the repo will be **NO ANY MAINTENANCE** after dealing with the aftermath myself.
+
 # A simple Hyprland wm environment.
 
 ## 1. Screenshot
